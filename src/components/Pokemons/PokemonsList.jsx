@@ -10,7 +10,6 @@ const PokemonsList = () => {
   const { error, loading, pokemons, nextPage, previousPage } = useSelector(
     (state) => state.pokeReducer
   );
-  console.log(pokemons);
   const dispatch = useDispatch();
 
   useEffect(() => {
