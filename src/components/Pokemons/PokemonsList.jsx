@@ -2,7 +2,7 @@ import { Container, ControlsContainer, ListContainer } from './pokemons.styles';
 import { useSelector, useDispatch } from 'react-redux';
 import { FcLeft, FcRight, FcUp } from 'react-icons/fc';
 import PokemonsCard from './PokemonsCard';
-import { Error } from '../common/Error';
+import { Msg } from '../common/Msg';
 import { useEffect } from 'react';
 import { getPokemons } from '../../redux/pokeApi/pokeActions';
 
@@ -23,12 +23,16 @@ const PokemonsList = () => {
     id === 'up' && dispatch(getPokemons(0));
   };
 
-  if (error)
-    return (
-      <Error>
-        <h2>Error al cargar Pokemones</h2>
-      </Error>
-    );
+  error && (
+    <Msg>
+      <h2>Error al cargar Pokemones</h2>
+    </Msg>
+  );
+  loading && (
+    <Msg>
+      <h2>Cargando Pokemones...</h2>
+    </Msg>
+  );
 
   return (
     <Container>
