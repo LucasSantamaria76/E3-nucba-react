@@ -10,10 +10,10 @@ export const ListContainer = styled.div`
   margin: 100px 30px 20px 20px;
   height: 80%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   grid-gap: 20px;
   overflow-y: Auto;
-  padding: 80px;
+  padding: 20px;
   background-color: #eee;
   border-radius: 8px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
@@ -48,54 +48,11 @@ export const ControlsContainer = styled.div`
 `;
 
 export const CardPokemonStyled = styled.div`
-  margin: 20px;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  width: 320px;
+  height: 504px;
+  perspective: 2000px;
 
-  .flip-card-front,
-  .flip-card-back {
-    width: 350px;
-    min-height: 350px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.9);
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-  }
-
-  .flip-card-front {
-    background-color: #e67e2255;
-    background-image: ${({ id }) =>
-      `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png)`};
-    transform: rotateY(0deg);
-  }
-
-  .flip-card-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #fff;
-    transform: rotateY(180deg);
-  }
-
-  .flip-card-front::after,
-  .flip-card-back::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    //opacity: 0.6;
-  }
-
-  .inner h3 {
+  h3 {
     margin-bottom: 8px;
     color: #000;
     letter-spacing: 2px;
@@ -106,18 +63,51 @@ export const CardPokemonStyled = styled.div`
     text-transform: capitalize;
   }
 
-  .inner p {
+  p {
     color: #000;
     font-size: 1.5rem;
     line-height: 28px;
   }
 
-  &:hover .flip-card-front {
-    transform: rotateY(-180deg);
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    transition: all 550ms cubic-bezier(0.1, 0.22, 0.8, 1.13);
+    transform-style: preserve-3d;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    backface-visibility: hidden;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+  }
+  .flip-card-front {
+    background-color: #2f2f2f;
+    color: #000;
+    h3 {
+      font-size: 2.5rem;
+    }
   }
 
-  &:hover .flip-card-back {
-    transform: rotateY(0deg);
+  .flip-card-back {
+    background-color: #b1cfc8;
+    transform: rotateY(180deg);
+  }
+  &:hover .flip-card-inner {
+    transform: rotateY(-180deg);
   }
 `;
 
